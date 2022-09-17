@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 
-                _gameManager.playerMessage.SendMessage(String.Format("You need the {0} to use this.", _gameManager.currentPlayerInteractable.key));
+                _gameManager.playerMessage.SendMessage(String.Format("You need the {0} to use thisS.", _gameManager.currentPlayerInteractable.key));
 
                 if (!playerHasKey)
                     return;

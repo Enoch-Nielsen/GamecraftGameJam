@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: fc822368e43196845a610759455b1dbf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d53af577b1dca3f4f8a0de223ee8ca48, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -725,7 +725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &524352705
 RectTransform:
   m_ObjectHideFlags: 0
@@ -906,8 +906,8 @@ MonoBehaviour:
   hasMessage: 0
   interactiveInterface: {fileID: 524352704}
   key: 0
-  item: 0
-  interactionMessage: 
+  item: 3
+  interactionMessage: You learned something new!
   preInteractionMessage: 
   canInteract: 1
   infiniteInteractions: 1
@@ -1285,6 +1285,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swaySpeed: 1
   cameraTransform: {fileID: 922705022}
+  swayHold: 2
 --- !u!1 &1022982777
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,7 +2101,7 @@ MonoBehaviour:
   key: 3
   item: 1
   interactionMessage: 
-  preInteractionMessage: 
+  preInteractionMessage: I don't think there would be something in there...
   canInteract: 1
   infiniteInteractions: 0
 --- !u!1 &2089279908

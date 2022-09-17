@@ -99,6 +99,7 @@ public class PlayerController : MonoBehaviour
             {
                 bool playerHasKey = false;
 
+                // Check if player has the needed item in their inventory.
                 foreach (var item in gameManager.playerInventory)
                 {
                     if (item == gameManager.currentPlayerInteractable.key)
@@ -122,7 +123,20 @@ public class PlayerController : MonoBehaviour
 
             if (gameManager.currentPlayerInteractable.givesItem)
             {
-                gameManager.playerInventory.Add(gameManager.currentPlayerInteractable.item);
+                bool hasItem = false;
+                
+                foreach (var item in gameManager.playerInventory)
+                {
+                    if (item == gameManager.currentPlayerInteractable.item)
+                    {
+                        hasItem = true;
+                    }
+                }
+
+                if (!hasItem)
+                {
+                    gameManager.playerInventory.Add(gameManager.currentPlayerInteractable.item);
+                }
             }
             
             if (gameManager.currentPlayerInteractable.hasInterface)

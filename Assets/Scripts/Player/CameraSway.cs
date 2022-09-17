@@ -31,7 +31,7 @@ public class CameraSway : MonoBehaviour
     private Transform GetTransform()
     {
         cameraTransform = this.gameObject.GetComponent<Transform>();
-        Debug.Log(cameraTransform.rotation.z);
+        //Debug.Log(cameraTransform.rotation.z);
         return cameraTransform;
     }
 }

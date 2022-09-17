@@ -267,6 +267,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e2d3e36b663ff74a9ddd05d66b28258, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  nonInteractableMaterial: {fileID: 2100000, guid: 6ff8ed723c9c52e46a244f724c15aeda,
+    type: 2}
+  interactableMaterial: {fileID: 2100000, guid: 195eb72ec812c32429c60f9bf5375a0b,
+    type: 2}
 --- !u!1 &1134619766
 GameObject:
   m_ObjectHideFlags: 0

@@ -26,5 +26,20 @@ public class PlayerController : MonoBehaviour
 
         transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalMovement);
         transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalMovement);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            if (!canInteract)
+            {
+                return;
+            }
+            OnInteract();
+        }
     }
+
+    private void OnInteract()
+    {
+        Debug.Log("Hamburger");
+    }
+
 }

@@ -343,9 +343,12 @@ MonoBehaviour:
   givesItem: 0
   hasInterface: 0
   isDoor: 0
+  hasMessage: 0
   interactiveInterface: {fileID: 0}
   key: 0
   item: 0
+  message: 
+  canInteract: 0
 --- !u!1 &1094316119
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  waterSpeed: 1
   _gameManager: {fileID: 1669128961}
 --- !u!23 &1134619769
 MeshRenderer:
@@ -900,9 +904,9 @@ MonoBehaviour:
   playerCanInteract: 0
   playerInventory: 
   currentPlayerInteractable: {fileID: 0}
-  mainCamera: {fileID: 1401024896}
   blurVolume: {fileID: 0}
   gameState: 0
+  playerMessage: {fileID: 0}
 --- !u!1 &1714273684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1183,6 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c28ed3f87ffd14448cf5c696b8306e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1134619767}
   timerText: {fileID: 1872747580}
   timeMinute: 5
   timeSecond: 0

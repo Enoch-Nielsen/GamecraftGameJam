@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player")]
     public bool playerCanInteract;
-    public enum Item {None ,Knife, RoomKey}
+    public enum Item {None, Knife, RoomKey, Knowledge}
     public List<Item> playerInventory;
     public Interactable currentPlayerInteractable;
     
@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     
     [Header("Game")]
     public GameState gameState;
-    public enum GameState {Moving,  Interacting, RoomTransition}
+    public enum GameState {Moving, Idle, Interacting, RoomTransition}
     public PlayerMessage playerMessage;
     
     private void Update()

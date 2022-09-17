@@ -18,13 +18,13 @@ public class Interactable : MonoBehaviour
     public bool givesItem;
     public bool hasInterface;
     public bool isDoor;
-    public bool hasMessage;
+    public bool hasPreMessage, hasMessage;
     
     [Header("Values")]
     public GameObject interactiveInterface;
     public GameManager.Item key;
     public GameManager.Item item;
-    public string message;
+    public string interactionMessage, preInteractionMessage;
     public bool canInteract;
     public bool infiniteInteractions;
     

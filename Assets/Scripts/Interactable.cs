@@ -26,6 +26,7 @@ public class Interactable : MonoBehaviour
     public GameManager.Item item;
     public string message;
     public bool canInteract;
+    public bool infiniteInteractions;
     
     void Start()
     {
@@ -38,7 +39,7 @@ public class Interactable : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player") && canInteract)
         {
             outline.SetFloat("_Alpha", outlineAlpha);
             _gameManager.playerCanInteract = true;

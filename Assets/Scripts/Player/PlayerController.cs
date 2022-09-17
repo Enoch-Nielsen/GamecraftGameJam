@@ -7,11 +7,18 @@ public class PlayerController : MonoBehaviour
 {
     //Player edited Variables
     [SerializeField] private float speed = 5;
+    [SerializeField] private int turnDirection;
+    [SerializeField] private int prevTurnDirection;
+    [SerializeField] private float playerTurnLerp;
+    [SerializeField] private float yRotation;
 
     //Player public Variables
+    public float waterSpeed = 1;
+    public float turnTime;
+    public GameObject playerSprite;
 
     //Player Specific Variables
-    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private GameManager gameManager;
 
     // Update is called once per frame
     void Update()
@@ -19,52 +26,102 @@ public class PlayerController : MonoBehaviour
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
 
-        if (_gameManager.gameState == GameManager.GameState.Moving)
+        if (horizontalMovement != 0)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalMovement);
-            transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalMovement);
+            if (horizontalMovement > 0)
+            {
+                turnDirection = 1;
+            }
+            
+            if (horizontalMovement < 0)
+            {
+                turnDirection = -1;
+            }
+
+            if (turnDirection != prevTurnDirection)
+            {
+                playerTurnLerp = 0;
+            }
+
+            prevTurnDirection = turnDirection;
+        }
+
+        if (turnDirection != 0)
+        {
+            yRotation = turnDirection < 0 ? 0 : 180;
+
+            if (playerTurnLerp <= turnTime)
+            {
+                playerTurnLerp += Time.deltaTime;
+            }
+        }
+
+        playerSprite.transform.localEulerAngles = Vector3.Lerp(playerSprite.transform.localEulerAngles, new Vector3(0, yRotation, 0), playerTurnLerp);
+
+        if (gameManager.gameState == GameManager.GameState.Moving)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * waterSpeed * verticalMovement);
+            transform.Translate(Vector3.right * Time.deltaTime * speed * waterSpeed * horizontalMovement);
         }
         
         // Check Player Interact
-        if (Input.GetKeyDown(KeyCode.E) && _gameManager.playerCanInteract && _gameManager.currentPlayerInteractable.canInteract)
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            if (_gameManager.currentPlayerInteractable.requiresKey)
+            if (gameManager.gameState == GameManager.GameState.Interacting)
+            {
+                Debug.Log("Stop Interface");
+                gameManager.currentPlayerInteractable.interactiveInterface.SetActive(false);
+                gameManager.gameState = GameManager.GameState.Moving;
+
+                return;
+            }
+
+            if (!gameManager.currentPlayerInteractable.canInteract)
+                return;
+            
+            if (!gameManager.playerCanInteract)
+                return;
+            
+            if (gameManager.currentPlayerInteractable.requiresKey)
             {
                 bool playerHasKey = false;
 
-                foreach (var item in _gameManager.playerInventory)
+                foreach (var item in gameManager.playerInventory)
                 {
-                    if (item == _gameManager.currentPlayerInteractable.key)
+                    if (item == gameManager.currentPlayerInteractable.key)
                     {
                         playerHasKey = true;
-                        _gameManager.playerInventory.Remove(item);
+                        gameManager.playerInventory.Remove(item);
                         break;
                     }
                 }
                 
-                _gameManager.playerMessage.SendMessage(String.Format("You need the {0} to use thisS.", _gameManager.currentPlayerInteractable.key));
+                gameManager.playerMessage.SendMessage(String.Format("You need the {0} to use thisS.", gameManager.currentPlayerInteractable.key));
 
                 if (!playerHasKey)
                     return;
             }
 
-            if (_gameManager.currentPlayerInteractable.givesItem)
+            if (gameManager.currentPlayerInteractable.givesItem)
             {
-                _gameManager.playerInventory.Add(_gameManager.currentPlayerInteractable.item);
+                gameManager.playerInventory.Add(gameManager.currentPlayerInteractable.item);
             }
             
-            if (_gameManager.currentPlayerInteractable.hasInterface)
+            if (gameManager.currentPlayerInteractable.hasInterface)
             {
-                _gameManager.gameState = GameManager.GameState.Interacting;
-                _gameManager.currentPlayerInteractable.interactiveInterface.SetActive(true);
+                gameManager.gameState = GameManager.GameState.Interacting;
+                gameManager.currentPlayerInteractable.interactiveInterface.SetActive(true);
             }
 
-            if (_gameManager.currentPlayerInteractable.hasMessage)
+            if (gameManager.currentPlayerInteractable.hasMessage)
             {
-                _gameManager.playerMessage.SendMessage(_gameManager.currentPlayerInteractable.message);
+                gameManager.playerMessage.SendMessage(gameManager.currentPlayerInteractable.message);
             }
 
-            _gameManager.currentPlayerInteractable.canInteract = false;
+            if (!gameManager.currentPlayerInteractable.infiniteInteractions)
+            {
+                gameManager.currentPlayerInteractable.canInteract = false;
+            }
         }
     }
 }

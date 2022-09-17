@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class GameTimer : MonoBehaviour
 {
+    [SerializeField] PlayerController player = null;
+    private float waterLevel = 0;
     public TextMeshProUGUI timerText;
     public int timeMinute = 5;
     public int timeSecond = 0;
@@ -29,6 +31,8 @@ public class GameTimer : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         timeSecond--;
+        waterLevel += 0.00001f;
+        player.waterSpeed /= waterLevel + 1;
         if(timeSecond < 0)
         {
             if(!(timeMinute <= 0))
@@ -56,5 +60,40 @@ public class GameTimer : MonoBehaviour
             StartCoroutine(CountDown());
         }
 
+    }
+
+    public void ResumeTimer()
+    {
+        timeSecond--;
+        StartCoroutine(CountDownAgain());
+    }
+
+    private IEnumerator CountDownAgain()
+    {
+        timeSecond--;
+        waterLevel += 0.00001f;
+        player.waterSpeed /= waterLevel + 1;
+        if (timeSecond < 0)
+        {
+            if (!(timeMinute <= 0))
+            {
+                timeMinute--;
+                timeSecond = 59;
+            }
+
+        }
+        if (timeSecond < 10)
+        {
+            timerText.text = timeMinute + ":0" + timeSecond;
+        }
+        else
+        {
+            timerText.text = timeMinute + ":" + timeSecond;
+        }
+
+        yield return new WaitForSeconds(0.00001f);
+
+        StartCoroutine(CountDown());
+        StopCoroutine(CountDownAgain());
     }
 }

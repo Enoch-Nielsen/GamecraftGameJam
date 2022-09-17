@@ -15,7 +15,12 @@ public class PipePuzzle : MonoBehaviour
     private readonly int[,] _finalPipeLayout = new int[3, 3] {{0, 0, 1}, {2, 5, 1}, {4, 3, 4}};
 
     public List<Pipe> pipeList;
-    public Pipe[,] pipes; 
+    public Pipe[,] pipes;
+
+    public List<Vector2> pipePositionList;
+    public Vector2[,] pipePositions;
+
+    public Pipe selectedPipe;
 
     private void Start()
     {
@@ -27,6 +32,9 @@ public class PipePuzzle : MonoBehaviour
             {
                 pipes[x, y] = pipeList[0];
                 pipeList.RemoveAt(0);
+                
+                pipePositions[x, y] = pipePositionList[0];
+                pipePositionList.RemoveAt(0);
             }
         }
     }

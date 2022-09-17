@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float speed = 5;
 
     //Player public Variables
+    public float waterSpeed = 1;
 
     //Player Specific Variables
     [SerializeField] private GameManager _gameManager;
@@ -21,8 +22,8 @@ public class PlayerController : MonoBehaviour
 
         if (_gameManager.gameState == GameManager.GameState.Moving)
         {
-            transform.Translate(Vector3.forward * Time.deltaTime * speed * verticalMovement);
-            transform.Translate(Vector3.right * Time.deltaTime * speed * horizontalMovement);
+            transform.Translate(Vector3.forward * Time.deltaTime * speed * waterSpeed * verticalMovement);
+            transform.Translate(Vector3.right * Time.deltaTime * speed * waterSpeed * horizontalMovement);
         }
         
         // Check Player Interact

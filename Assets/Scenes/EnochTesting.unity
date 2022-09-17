@@ -895,7 +895,7 @@ MonoBehaviour:
   interactiveInterface: {fileID: 0}
   key: 1
   item: 2
-  message: You found the Key!
+  message: You used the Knife and found the Key!
   canInteract: 1
 --- !u!1 &1071431234
 GameObject:

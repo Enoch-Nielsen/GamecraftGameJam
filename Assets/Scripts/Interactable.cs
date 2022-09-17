@@ -36,7 +36,7 @@ public class Interactable : MonoBehaviour
         {
             outline.SetFloat("_Alpha", outlineAlpha);
             _gameManager.playerCanInteract = true;
-            collider.GetComponent<PlayerController>().currentInteractable = this;
+            _gameManager.currentPlayerInteractable = this;
         }
     }
 

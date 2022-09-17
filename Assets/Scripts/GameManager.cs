@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour
     // Player Variables.
     public bool playerCanInteract;
     public enum Item {None ,Knife, RoomKey}
-    public List<Item> playerInventory; 
+    public List<Item> playerInventory;
+    public Interactable currentPlayerInteractable;
     
     // Camera.
     public Camera mainCamera;

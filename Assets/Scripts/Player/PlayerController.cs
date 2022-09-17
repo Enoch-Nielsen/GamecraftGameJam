@@ -11,13 +11,6 @@ public class PlayerController : MonoBehaviour
 
     //Player Specific Variables
     [SerializeField] private GameManager _gameManager;
-    public Interactable currentInteractable;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -34,13 +27,13 @@ public class PlayerController : MonoBehaviour
         // Check Player Interact
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.playerCanInteract)
         {
-            if (currentInteractable.requiresKey)
+            if (_gameManager.currentPlayerInteractable.requiresKey)
             {
                 bool playerHasKey = false;
 
                 foreach (var item in _gameManager.playerInventory)
                 {
-                    if (item == currentInteractable.key)
+                    if (item == _gameManager.currentPlayerInteractable.key)
                     {
                         playerHasKey = true;
                         _gameManager.playerInventory.Remove(item);
@@ -51,15 +44,15 @@ public class PlayerController : MonoBehaviour
                     return;
             }
 
-            if (currentInteractable.givesItem)
+            if (_gameManager.currentPlayerInteractable.givesItem)
             {
-                _gameManager.playerInventory.Add(currentInteractable.item);
+                _gameManager.playerInventory.Add(_gameManager.currentPlayerInteractable.item);
             }
             
-            if (currentInteractable.hasInterface)
+            if (_gameManager.currentPlayerInteractable.hasInterface)
             {
                 _gameManager.gameState = GameManager.GameState.Interacting;
-                currentInteractable.interactiveInterface.SetActive(true);
+                _gameManager.currentPlayerInteractable.interactiveInterface.SetActive(true);
             }
         }
     }

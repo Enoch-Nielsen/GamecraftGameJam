@@ -834,8 +834,9 @@ GameObject:
   m_Component:
   - component: {fileID: 683559029}
   - component: {fileID: 683559030}
+  - component: {fileID: 683559031}
   m_Layer: 0
-  m_Name: George_Idle
+  m_Name: George
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -908,6 +909,26 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &683559031
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683559028}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7ef7e50685247104c9c3bcfc4f7c5df2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &866041280
 GameObject:
   m_ObjectHideFlags: 0
@@ -1682,6 +1703,7 @@ GameObject:
   - component: {fileID: 1325273811}
   - component: {fileID: 1325273809}
   - component: {fileID: 1325273808}
+  - component: {fileID: 1325273813}
   - component: {fileID: 1325273807}
   - component: {fileID: 1325273812}
   m_Layer: 0
@@ -1800,6 +1822,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &1325273813
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1325273806}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.135794, z: 0.90245235}
+  m_Center: {x: 0, y: 0.06789702, z: 0.8953734}
 --- !u!1 &1443374129
 GameObject:
   m_ObjectHideFlags: 0

@@ -351,11 +351,13 @@ MonoBehaviour:
   givesItem: 0
   hasInterface: 0
   isDoor: 0
+  hasPreMessage: 0
   hasMessage: 0
   interactiveInterface: {fileID: 0}
   key: 0
   item: 0
-  message: 
+  interactionMessage: 
+  preInteractionMessage: 
   canInteract: 0
   infiniteInteractions: 0
 --- !u!1 &1094316119
@@ -431,6 +433,7 @@ MonoBehaviour:
   waterSpeed: 1
   turnTime: 0
   playerSprite: {fileID: 0}
+  animator: {fileID: 0}
   gameManager: {fileID: 0}
 --- !u!23 &1134619769
 MeshRenderer:

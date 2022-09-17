@@ -6,7 +6,7 @@ public class CameraSway : MonoBehaviour
 {
     [SerializeField] float swaySpeed = 1;
     [SerializeField] Transform cameraTransform = null;
-    [SerializeField] float swayHold = 2;
+    //[SerializeField] float swayHold = 2;
     // Start is called before the first frame update
     void Start()
     {

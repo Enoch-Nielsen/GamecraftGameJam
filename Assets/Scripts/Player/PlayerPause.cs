@@ -8,7 +8,7 @@ public class PlayerPause : MonoBehaviour
     [SerializeField] GameObject pauseMenu = null;
     [SerializeField] GameObject gameUI = null;
     [SerializeField] GameObject player = null;
-    [SerializeField] Scene gameScene;
+    [SerializeField] GameObject mainCamera;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +23,7 @@ public class PlayerPause : MonoBehaviour
             pauseMenu.SetActive(true);
             gameUI.SetActive(false);
             player.GetComponent<PlayerController>().enabled = false;
+            mainCamera.GetComponent<CameraSway>().enabled = false;
         }
     }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class PlayerController : MonoBehaviour
         }
         
         // Check Player Interact
-        if (Input.GetKeyDown(KeyCode.E) && _gameManager.playerCanInteract)
+        if (Input.GetKeyDown(KeyCode.E) && _gameManager.playerCanInteract && _gameManager.currentPlayerInteractable.canInteract)
         {
             if (_gameManager.currentPlayerInteractable.requiresKey)
             {
@@ -37,8 +38,11 @@ public class PlayerController : MonoBehaviour
                     {
                         playerHasKey = true;
                         _gameManager.playerInventory.Remove(item);
+                        break;
                     }
                 }
+                
+                _gameManager.playerMessage.SendMessage(String.Format("You need the {0} to use thisS.", _gameManager.currentPlayerInteractable.key));
 
                 if (!playerHasKey)
                     return;
@@ -54,6 +58,13 @@ public class PlayerController : MonoBehaviour
                 _gameManager.gameState = GameManager.GameState.Interacting;
                 _gameManager.currentPlayerInteractable.interactiveInterface.SetActive(true);
             }
+
+            if (_gameManager.currentPlayerInteractable.hasMessage)
+            {
+                _gameManager.playerMessage.SendMessage(_gameManager.currentPlayerInteractable.message);
+            }
+
+            _gameManager.currentPlayerInteractable.canInteract = false;
         }
     }
 }

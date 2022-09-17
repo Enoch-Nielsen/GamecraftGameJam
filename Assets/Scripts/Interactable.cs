@@ -1,30 +1,32 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UI;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    // Outline Variables
+    [Header("Highlight")]
     [SerializeField] private Material outline;
     [SerializeField] [Range(0.0F, 1.0F)] private float outlineAlpha;
 
-    // Interactable Variables
+    [Header("Manager")]
     [SerializeField] private GameManager _gameManager;
-    [SerializeField]
     
+    [Header("Traits")]
     public bool requiresKey;
     public bool givesItem;
-    
     public bool hasInterface;
     public bool isDoor;
-
-    // Conditional Variables
+    public bool hasMessage;
+    
+    [Header("Values")]
     public GameObject interactiveInterface;
     public GameManager.Item key;
     public GameManager.Item item;
+    public string message;
+    public bool canInteract;
     
-    // Start is called before the first frame update
     void Start()
     {
         Material material = Instantiate(outline);

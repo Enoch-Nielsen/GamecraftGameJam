@@ -27,6 +27,10 @@ public class Interactable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Material material = Instantiate(outline);
+        gameObject.GetComponent<MeshRenderer>().materials[1] = material;
+        outline = gameObject.GetComponent<MeshRenderer>().materials[1];
+
         outline.SetFloat("_Alpha", 0);
     }
 
@@ -45,7 +49,7 @@ public class Interactable : MonoBehaviour
         if (collider.CompareTag("Player"))
         {
             outline.SetFloat("_Alpha", 0);
-            _gameManager.playerCanInteract = true;
+            _gameManager.playerCanInteract = false;
         }
     }
 }

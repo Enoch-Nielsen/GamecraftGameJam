@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     public float waterSpeed = 1;
     public float turnTime;
     public GameObject playerSprite;
+    public Animator animator;
 
     //Player Specific Variables
     [SerializeField] private GameManager gameManager;
@@ -26,6 +27,18 @@ public class PlayerController : MonoBehaviour
         float horizontalMovement = Input.GetAxis("Horizontal");
         float verticalMovement = Input.GetAxis("Vertical");
 
+        // Update Game State and Animation State.
+        if (horizontalMovement != 0 || verticalMovement != 0 && gameManager.gameState != GameManager.GameState.Interacting)
+        {
+            gameManager.gameState = GameManager.GameState.Moving;
+            animator.SetBool("Moving", true);
+        }
+        else
+        {
+            animator.SetBool("Moving", false);
+        }
+
+        // Update Horizontal Direction
         if (horizontalMovement != 0)
         {
             if (horizontalMovement > 0)
@@ -71,7 +84,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Stop Interface");
                 gameManager.currentPlayerInteractable.interactiveInterface.SetActive(false);
-                gameManager.gameState = GameManager.GameState.Moving;
+                gameManager.gameState = GameManager.GameState.Idle;
 
                 return;
             }
@@ -81,7 +94,7 @@ public class PlayerController : MonoBehaviour
             
             if (!gameManager.playerCanInteract)
                 return;
-            
+
             if (gameManager.currentPlayerInteractable.requiresKey)
             {
                 bool playerHasKey = false;
@@ -96,10 +109,15 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 
-                gameManager.playerMessage.SendMessage(String.Format("You need the {0} to use thisS.", gameManager.currentPlayerInteractable.key));
-
                 if (!playerHasKey)
+                {
+                    if (gameManager.currentPlayerInteractable.hasPreMessage)
+                    {
+                        gameManager.playerMessage.SendMessage(gameManager.currentPlayerInteractable.preInteractionMessage);
+                    }
+                    
                     return;
+                }
             }
 
             if (gameManager.currentPlayerInteractable.givesItem)
@@ -115,7 +133,7 @@ public class PlayerController : MonoBehaviour
 
             if (gameManager.currentPlayerInteractable.hasMessage)
             {
-                gameManager.playerMessage.SendMessage(gameManager.currentPlayerInteractable.message);
+                gameManager.playerMessage.SendMessage(gameManager.currentPlayerInteractable.interactionMessage);
             }
 
             if (!gameManager.currentPlayerInteractable.infiniteInteractions)

@@ -26,8 +26,23 @@ public class PlayerController : MonoBehaviour
         }
         
         // Check Player Interact
-        if (Input.GetKeyDown(KeyCode.E) && _gameManager.playerCanInteract && _gameManager.currentPlayerInteractable.canInteract)
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            if (_gameManager.gameState == GameManager.GameState.Interacting)
+            {
+                Debug.Log("Stop Interface");
+                _gameManager.currentPlayerInteractable.interactiveInterface.SetActive(false);
+                _gameManager.gameState = GameManager.GameState.Moving;
+
+                return;
+            }
+
+            if (!_gameManager.currentPlayerInteractable.canInteract)
+                return;
+            
+            if (!_gameManager.playerCanInteract)
+                return;
+            
             if (_gameManager.currentPlayerInteractable.requiresKey)
             {
                 bool playerHasKey = false;
@@ -64,7 +79,10 @@ public class PlayerController : MonoBehaviour
                 _gameManager.playerMessage.SendMessage(_gameManager.currentPlayerInteractable.message);
             }
 
-            _gameManager.currentPlayerInteractable.canInteract = false;
+            if (!_gameManager.currentPlayerInteractable.infiniteInteractions)
+            {
+                _gameManager.currentPlayerInteractable.canInteract = false;
+            }
         }
     }
 }

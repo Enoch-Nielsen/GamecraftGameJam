@@ -95,6 +95,7 @@ public class PlayerController : MonoBehaviour
             if (!gameManager.playerCanInteract)
                 return;
 
+            // Checks to see if the interaction requires a key.
             if (gameManager.currentPlayerInteractable.requiresKey)
             {
                 bool playerHasKey = false;
@@ -121,6 +122,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
+            // Checks to see if the interaction rewards an item.
             if (gameManager.currentPlayerInteractable.givesItem)
             {
                 bool hasItem = false;

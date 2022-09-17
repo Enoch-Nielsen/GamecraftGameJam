@@ -61,4 +61,39 @@ public class GameTimer : MonoBehaviour
         }
 
     }
+
+    public void ResumeTimer()
+    {
+        timeSecond--;
+        StartCoroutine(CountDownAgain());
+    }
+
+    private IEnumerator CountDownAgain()
+    {
+        timeSecond--;
+        waterLevel += 0.00001f;
+        player.waterSpeed /= waterLevel + 1;
+        if (timeSecond < 0)
+        {
+            if (!(timeMinute <= 0))
+            {
+                timeMinute--;
+                timeSecond = 59;
+            }
+
+        }
+        if (timeSecond < 10)
+        {
+            timerText.text = timeMinute + ":0" + timeSecond;
+        }
+        else
+        {
+            timerText.text = timeMinute + ":" + timeSecond;
+        }
+
+        yield return new WaitForSeconds(0.00001f);
+
+        StartCoroutine(CountDown());
+        StopCoroutine(CountDownAgain());
+    }
 }

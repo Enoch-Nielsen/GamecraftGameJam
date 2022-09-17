@@ -38,9 +38,15 @@ public class GameTimer : MonoBehaviour
             }
 
         }
-
-        timerText.text = timeMinute + ":" + timeSecond;
-        if(timeMinute == 0 && timeSecond == 0)
+        if(timeSecond < 10)
+        {
+            timerText.text = timeMinute + ":0" + timeSecond;
+        }
+        else
+        {
+            timerText.text = timeMinute + ":" + timeSecond;
+        }
+        if (timeMinute == 0 && timeSecond == 0)
         {
             hasTimeLeft = false;
             StopCoroutine(CountDown());            

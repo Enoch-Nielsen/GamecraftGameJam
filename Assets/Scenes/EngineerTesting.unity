@@ -1169,8 +1169,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 1872747580}
-  timeMinute: 0
-  timeSecond: 3
+  timeMinute: 5
+  timeSecond: 0
   hasTimeLeft: 1
 --- !u!4 &1878459857
 Transform:

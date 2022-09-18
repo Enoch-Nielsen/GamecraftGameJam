@@ -7,6 +7,10 @@ using UnityEngine.UI;
 public class GameTimer : MonoBehaviour
 {
     [SerializeField] PlayerController player = null;
+    [SerializeField] AudioSource deathSound = null;
+    //[SerializeField] GameManager gameManager = null;
+    [SerializeField] GameObject game = null;
+    [SerializeField] GameObject gameOverScreen = null;
     private float waterLevel = 0;
     public TextMeshProUGUI timerText;
     public int timeMinute = 5;
@@ -24,7 +28,12 @@ public class GameTimer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (!hasTimeLeft)
+        {
+            deathSound.enabled = true;
+            game.SetActive(false);
+            gameOverScreen.SetActive(true);
+        }
     }
 
     private IEnumerator CountDown()

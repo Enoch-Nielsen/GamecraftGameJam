@@ -7,6 +7,7 @@ public class PipePuzzle : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
     [SerializeField] private bool solved = true;
+    [SerializeField] private AudioSource victorySound = null;
     
     // 0 : Nothing, 1 : Straight, Upright : 2, UpLeft : 3, RightUp: 4, DownRight : 5.
     public int[] currentPipeLayout = new int[] {0, 5, 1, 0, 1, 4, 4, 2, 3};
@@ -46,6 +47,7 @@ public class PipePuzzle : MonoBehaviour
             
             if (delayTimer <= 0)
             {
+                victorySound.enabled = true;
                 gameManager.playerInventory.Add(GameManager.Item.RoomKey);
                 gameManager.gameState = GameManager.GameState.Idle;
                 gameManager.playerMessage.SendMessage("You obtained the Room Key!");

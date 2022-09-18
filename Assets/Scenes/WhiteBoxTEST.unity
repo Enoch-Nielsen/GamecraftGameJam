@@ -2223,6 +2223,53 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1167494662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5b2dbc7953be8f34fa26ea91d60b098e,
+    type: 3}
+  m_PrefabInstance: {fileID: 712289844}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1167494663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167494662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 973e4fa562895914390b74739a119f7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outline: {fileID: 2100000, guid: 195eb72ec812c32429c60f9bf5375a0b, type: 2}
+  outlineAlpha: 0
+  _gameManager: {fileID: 942883933}
+  requiresKey: 0
+  givesItem: 1
+  hasInterface: 0
+  isDoor: 0
+  hasPreMessage: 0
+  hasMessage: 0
+  interactiveInterface: {fileID: 0}
+  key: 0
+  item: 0
+  interactionMessage: 
+  preInteractionMessage: 
+  canInteract: 0
+  infiniteInteractions: 0
+--- !u!135 &1167494664
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167494662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.06
+  m_Center: {x: 0, y: 0, z: 0.01}
 --- !u!1 &1182942027
 GameObject:
   m_ObjectHideFlags: 0

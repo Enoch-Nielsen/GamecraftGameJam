@@ -20,12 +20,10 @@ public class CameraSway : MonoBehaviour
         {
             currentSwaySpeed = swaySpeed;
         }
-        else if (currentRotation.z * 57.29 > swayBounds)
+        else if (currentRotation.z * 57.29> swayBounds)
         {
             currentSwaySpeed = -swaySpeed;
         }
-        
-        // Subtract 9 in the final scene.
         
         Debug.Log(currentRotation.z * 57.29);
     }

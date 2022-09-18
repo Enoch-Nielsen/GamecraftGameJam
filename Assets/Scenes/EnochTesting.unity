@@ -1185,6 +1185,7 @@ GameObject:
   - component: {fileID: 922705020}
   - component: {fileID: 922705019}
   - component: {fileID: 922705023}
+  - component: {fileID: 922705024}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: Untagged
@@ -1306,8 +1307,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swaySpeed: 0.75
   currentSwaySpeed: 1
-  swayBounds: 0.65
+  swayBounds: 0.75
   cameraTransform: {fileID: 922705022}
+--- !u!114 &922705024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 922705018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e1d61c2f27faa54a87c3f60b2be4938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1325273811}
+  distance: 1
 --- !u!1 &1022982777
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,14 +16,16 @@ public class CameraSway : MonoBehaviour
         Quaternion currentRotation = gameObject.transform.localRotation;
         cameraTransform.Rotate(Vector3.forward * Time.deltaTime * currentSwaySpeed);
         
-        if (currentRotation.z * 57.29 - 9 < -swayBounds)
+        if (currentRotation.z * 57.29 < -swayBounds)
         {
             currentSwaySpeed = swaySpeed;
         }
-        else if (currentRotation.z * 57.29 - 9> swayBounds)
+        else if (currentRotation.z * 57.29 > swayBounds)
         {
             currentSwaySpeed = -swaySpeed;
         }
+        
+        // Subtract 9 in the final scene.
         
         Debug.Log(currentRotation.z * 57.29);
     }

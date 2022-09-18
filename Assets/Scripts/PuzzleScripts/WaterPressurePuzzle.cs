@@ -34,6 +34,7 @@ public class WaterPressurePuzzle : MonoBehaviour
                 gameManager.playerInventory.Add(GameManager.Item.RoomKey);
                 gameManager.gameState = GameManager.GameState.Idle;
                 gameManager.playerMessage.SendMessage("You obtained the Room Key!");
+                gameManager.currentPlayerInteractable.canInteract = false;
                 gameObject.SetActive(false);
             }
         }

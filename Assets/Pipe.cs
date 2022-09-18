@@ -10,11 +10,13 @@ public class Pipe : MonoBehaviour
     
     // 0 : Nothing, 1 : Straight, Upright : 2, UpLeft : 3, RightUp: 4, DownRight : 5.
     [Tooltip("0 : Nothing, 1 : Straight, Upright : 2, UpLeft : 3, RightUp: 4, DownRight : 5")]
-    [SerializeField] private int pipeId;
+    public int pipeId;
     
-    public int xIndex, yIndeX;
     [SerializeField] private bool leftValid, rightValid, upValid, downValid;
+    [SerializeField] private bool leftCheck, rightCheck, upCheck, downCheck;
+    [SerializeField] private int leftSubtractive, rightSubtractive, upSubtractive, downSubtractive;
 
+    public int index;
     public Image selfImage;
     public bool doHighlight;
     public bool canSwap;
@@ -36,18 +38,37 @@ public class Pipe : MonoBehaviour
         }
         
         // Modify Position Here.
+        Vector3 pipePosition = new Vector3(pipePuzzle.pipePositionList[index].x,
+            pipePuzzle.pipePositionList[index].y, 0);
+        
+        gameObject.GetComponent<RectTransform>().localPosition = pipePosition;
     }
 
-    void OnPlayerClick()
+    public void OnPlayerClick()
     {
+        Debug.Log(this);
         if (pipeId == 0)
         {
             if (canSwap)
             {
-                Pipe temp = this;
+                canSwap = false;
+                doHighlight = false;
 
-                pipePuzzle.pipes[xIndex, yIndeX] = pipePuzzle.selectedPipe;
-                pipePuzzle.selectedPipe = temp;
+                // Swap Current ID's
+                int tempId = pipeId;
+
+                pipePuzzle.currentPipeLayout[index] = pipePuzzle.currentPipeLayout[pipePuzzle.selectedPipe.index];
+                pipePuzzle.currentPipeLayout[pipePuzzle.selectedPipe.index] = tempId;
+
+                int tempIndex = index;
+
+                index = pipePuzzle.selectedPipe.index;
+                pipePuzzle.selectedPipe.index = tempIndex;
+
+                Pipe tempPipe = pipePuzzle.pipeList[index];
+
+                pipePuzzle.pipeList[index] = pipePuzzle.pipeList[pipePuzzle.selectedPipe.index];
+                pipePuzzle.pipeList[pipePuzzle.selectedPipe.index] = tempPipe;
             }
             
             return;
@@ -55,21 +76,43 @@ public class Pipe : MonoBehaviour
         
         pipePuzzle.selectedPipe = this;
         
-        leftValid = pipePuzzle.pipes[xIndex - 1, yIndeX].pipeId == 0;
-        rightValid = pipePuzzle.pipes[xIndex + 1, yIndeX].pipeId == 0;
-        upValid = pipePuzzle.pipes[xIndex, yIndeX - 1].pipeId == 0;
-        downValid = pipePuzzle.pipes[xIndex - 1, yIndeX + 1].pipeId == 0;
-        
-        pipePuzzle.pipes[xIndex - 1, yIndeX].doHighlight = leftValid;
-        pipePuzzle.pipes[xIndex - 1, yIndeX].canSwap = leftValid;
-        
-        pipePuzzle.pipes[xIndex + 1, yIndeX].doHighlight = rightValid;
-        pipePuzzle.pipes[xIndex + 1, yIndeX].canSwap = rightValid;
-        
-        pipePuzzle.pipes[xIndex, yIndeX - 1].doHighlight = upValid;
-        pipePuzzle.pipes[xIndex, yIndeX - 1].canSwap = upValid;
-        
-        pipePuzzle.pipes[xIndex, yIndeX + 1].doHighlight = downValid;
-        pipePuzzle.pipes[xIndex, yIndeX + 1].canSwap = downValid;
+        for (int i = 0; i < 9; i++)
+        {
+            pipePuzzle.pipeList[i].doHighlight = false;
+            pipePuzzle.pipeList[i].canSwap = false;
+        }
+
+        leftCheck = index - 3 > -1;
+        rightCheck = index + 3 < 9;
+        upCheck = index - 1 > -1;
+        downCheck = index + 1 < 9;
+
+        if (leftCheck)
+        {
+            leftValid = pipePuzzle.pipeList[index - 3].pipeId == 0;
+            pipePuzzle.pipeList[index - 3].doHighlight = leftValid;
+            pipePuzzle.pipeList[index - 3].canSwap = leftValid;
+        }
+
+        if (rightCheck)
+        {
+            rightValid = pipePuzzle.pipeList[index + 3].pipeId == 0;
+            pipePuzzle.pipeList[index + 3].doHighlight = rightValid;
+            pipePuzzle.pipeList[index + 3].canSwap = rightValid;
+        }
+
+        if (upCheck)
+        {
+            upValid = pipePuzzle.pipeList[index - 1].pipeId == 0;
+            pipePuzzle.pipeList[index - 1].doHighlight = upValid;
+            pipePuzzle.pipeList[index - 1].canSwap = upValid;
+        }
+
+        if (downCheck)
+        {
+            downValid = pipePuzzle.pipeList[index + 1].pipeId == 0;
+            pipePuzzle.pipeList[index + 1].doHighlight = downValid;
+            pipePuzzle.pipeList[index + 1].canSwap = downValid;
+        }
     }
 }

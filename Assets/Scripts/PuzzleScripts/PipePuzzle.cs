@@ -58,6 +58,9 @@ public class PipePuzzle : MonoBehaviour
         if (solved)
         {
             gameManager.playerInventory.Add(GameManager.Item.RoomKey);
+            gameManager.gameState = GameManager.GameState.Idle;
+            gameManager.playerMessage.SendMessage("You obtained the Room Key!");
+            gameObject.SetActive(false);
         }
     }
 }

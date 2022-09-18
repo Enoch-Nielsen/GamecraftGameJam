@@ -359,37 +359,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b346ed11f30740248a62878f4c0f09c7, type: 3}
---- !u!1 &407007251
+--- !u!1 &407007251 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5305834040136690008, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5305834040275212619}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 407007252}
-  m_Layer: 0
-  m_Name: LockerPuzzle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &407007252
+--- !u!4 &407007252 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+    type: 3}
+  m_PrefabInstance: {fileID: 5305834040275212619}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 407007251}
-  m_LocalRotation: {x: -0.42261827, y: 0, z: -0, w: 0.9063079}
-  m_LocalPosition: {x: -97.12971, y: 2118.8647, z: -5919.397}
-  m_LocalScale: {x: 97.3079, y: 97.30789, z: 97.30789}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 515382736}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &454600892
 GameObject:
   m_ObjectHideFlags: 0
@@ -867,12 +848,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &653600200 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3336409634735178987, guid: bd3680c745196e84cbe46e179095e810,
-    type: 3}
-  m_PrefabInstance: {fileID: 3336409634094309667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &653600201 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3336409634735178986, guid: bd3680c745196e84cbe46e179095e810,
@@ -949,9 +924,9 @@ MonoBehaviour:
   isDoor: 0
   hasPreMessage: 0
   hasMessage: 0
-  interactiveInterface: {fileID: 653600200}
+  interactiveInterface: {fileID: 407007251}
   key: 0
-  item: 3
+  item: 0
   interactionMessage: You learned something new!
   preInteractionMessage: 
   canInteract: 1
@@ -1529,7 +1504,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: asdasdaddd
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1556,14 +1531,14 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 18
-  m_fontSizeBase: 18
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -1623,8 +1598,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 300, y: 50}
+  m_AnchoredPosition: {x: -675, y: -410}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1308427317
 GameObject:
@@ -2317,6 +2292,95 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd3680c745196e84cbe46e179095e810, type: 3}
+--- !u!1001 &5305834040275212619
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 515382736}
+    m_Modifications:
+    - target: {fileID: 5305834039623614635, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1443374130}
+    - target: {fileID: 5305834040136690008, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_Name
+      value: LockerPuzzle
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690014, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: _gameManager
+      value: 
+      objectReference: {fileID: 1443374130}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040136690015, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5305834040668459922, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1443374130}
+    - target: {fileID: 5305834041030404673, guid: 9aa663769cf3cbe49bef8a81ee7a56d2,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1443374130}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9aa663769cf3cbe49bef8a81ee7a56d2, type: 3}
 --- !u!1001 &8716893406614331948
 PrefabInstance:
   m_ObjectHideFlags: 0

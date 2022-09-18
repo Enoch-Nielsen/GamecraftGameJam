@@ -112,6 +112,7 @@ public class PlayerController : MonoBehaviour
                     {
                         playerHasKey = true;
                         gameManager.playerInventory.Remove(item);
+                        gameManager.currentPlayerInteractable.requiresKey = false;
                         break;
                     }
                 }

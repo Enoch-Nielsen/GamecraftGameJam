@@ -6,21 +6,16 @@ using UnityEngine.UI;
 
 public class Crate : MonoBehaviour
 {
-    public CratePuzzle cratePuzzle;
-    
     public bool canMove;
     public bool isMoving;
 
     public float speed;
     public float moveTime, moveTimer;
-
-    public Image selfImage;
-
+    
     private Vector2 _direction;
     
     private void Start()
     {
-        selfImage.color = Color.white;
         moveTimer = moveTime;
     }
 
@@ -28,6 +23,8 @@ public class Crate : MonoBehaviour
     {
         if (moveTimer <= moveTime)
         {
+            isMoving = true;
+            moveTimer += Time.deltaTime;
             transform.Translate(_direction * speed * Time.deltaTime);
         }
         else
@@ -41,8 +38,9 @@ public class Crate : MonoBehaviour
     public void Move(int direction)
     {
         if (isMoving) return;
+        if (!canMove) return; 
         
-        float moveTimer = 0;
+        moveTimer = 0;
 
         switch (direction)
         {
@@ -62,5 +60,10 @@ public class Crate : MonoBehaviour
                 _direction = new Vector2(0, -1);
                 break;
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        _direction = new Vector2(0, 0);
     }
 }

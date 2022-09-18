@@ -7,7 +7,7 @@ using UnityEngine;
 public class CratePuzzle : MonoBehaviour
 {
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private bool solved = true;
+    [SerializeField] private bool solved = false;
     [SerializeField] private GameObject whiteCrate, blackCrate;
     
     // 0 : Nothing, 1 : White, 2 : Black.
@@ -25,7 +25,6 @@ public class CratePuzzle : MonoBehaviour
 
     private void Start()
     {
-
         float startPosX = crateSize * 2 * -1;
         float startPosY = startPosX * -1;
 
@@ -47,29 +46,30 @@ public class CratePuzzle : MonoBehaviour
         
         foreach (var position in cratePositionList)
         {
-            crateList.Add(Instantiate(initialCrateLayout[index] == 0 ? whiteCrate : blackCrate).GetComponent<Crate>());
-            crateList.Last().transform.position = position;
-            index++;
-        }
+            if (initialCrateLayout[index] == 0)
+            {
+                index++;
+                continue;
+            }
+            
+            
+            GameObject crate = Instantiate(initialCrateLayout[index] == 1 ? whiteCrate : blackCrate, transform);
+            crate.GetComponent<RectTransform>().anchoredPosition = position;
 
-        foreach (var crate in crateList)
-        {
-            crate.cratePuzzle = this;
+            crateList.Add(crate.GetComponent<Crate>());
+            Debug.Log(crateList.Last());
+
+            index++;
         }
     }
 
     private void Update()
     {
-        solved = true;
-
         if (Input.GetKeyDown(KeyCode.A))
         {
             foreach (var crate in crateList)
             {
-                if (!crate.isMoving)
-                {
-                    crate.Move(0);
-                }
+                crate.Move(0);
             }
         }
         

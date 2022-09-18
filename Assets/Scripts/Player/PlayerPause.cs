@@ -9,6 +9,7 @@ public class PlayerPause : MonoBehaviour
     [SerializeField] GameObject gameUI = null;
     [SerializeField] GameObject player = null;
     [SerializeField] GameObject mainCamera;
+    [SerializeField] string sceneName = null;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,6 +35,6 @@ public class PlayerPause : MonoBehaviour
 
     public void OnQuit()
     {
-        SceneManager.LoadScene("EngineerTesting");
+        SceneManager.LoadScene(sceneName);
     }
 }

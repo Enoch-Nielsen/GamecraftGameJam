@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
 {
     [Header("Player")]
     public bool playerCanInteract;
-    public enum Item {None, Knife, RoomKey, Knowledge}
+    public enum Item {None, Knife, RoomKey, Knowledge, LunchBoxKey, Key}
     public List<Item> playerInventory;
     public Interactable currentPlayerInteractable;
     

@@ -14,7 +14,6 @@ public class Pipe : MonoBehaviour
     
     [SerializeField] private bool leftValid, rightValid, upValid, downValid;
     [SerializeField] private bool leftCheck, rightCheck, upCheck, downCheck;
-    [SerializeField] private int leftSubtractive, rightSubtractive, upSubtractive, downSubtractive;
 
     public int index;
     public Image selfImage;

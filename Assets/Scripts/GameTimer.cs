@@ -11,6 +11,7 @@ public class GameTimer : MonoBehaviour
     //[SerializeField] GameManager gameManager = null;
     [SerializeField] GameObject game = null;
     [SerializeField] GameObject gameOverScreen = null;
+    [SerializeField] GameObject alarmAudio = null;
     private float waterLevel = 0;
     public TextMeshProUGUI timerText;
     public int timeMinute = 5;
@@ -33,6 +34,7 @@ public class GameTimer : MonoBehaviour
             deathSound.enabled = true;
             game.SetActive(false);
             gameOverScreen.SetActive(true);
+            alarmAudio.SetActive(false);
         }
     }
 

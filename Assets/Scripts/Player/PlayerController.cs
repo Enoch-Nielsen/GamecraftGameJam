@@ -85,6 +85,11 @@ public class PlayerController : MonoBehaviour
                 Debug.Log("Stop Interface");
                 gameManager.currentPlayerInteractable.interactiveInterface.SetActive(false);
                 gameManager.gameState = GameManager.GameState.Idle;
+                
+                if (gameManager.currentPlayerInteractable.hasMessage)
+                {
+                    gameManager.playerMessage.SendMessage(gameManager.currentPlayerInteractable.interactionMessage);
+                }
 
                 return;
             }
@@ -145,11 +150,6 @@ public class PlayerController : MonoBehaviour
             {
                 gameManager.gameState = GameManager.GameState.Interacting;
                 gameManager.currentPlayerInteractable.interactiveInterface.SetActive(true);
-            }
-
-            if (gameManager.currentPlayerInteractable.hasMessage)
-            {
-                gameManager.playerMessage.SendMessage(gameManager.currentPlayerInteractable.interactionMessage);
             }
 
             if (!gameManager.currentPlayerInteractable.infiniteInteractions)

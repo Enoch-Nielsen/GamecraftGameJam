@@ -20,11 +20,11 @@ public class CameraSway : MonoBehaviour
         Transform currentRotation = GetTransform();
         cameraTransform.Rotate(Vector3.forward * Time.deltaTime * swaySpeed);
         
-        if (currentRotation.transform.rotation.z < -0.05f)
+        if (currentRotation.transform.rotation.z < -0.5f)
         {
             swaySpeed *= -1;
         }
-        else if (currentRotation.transform.rotation.z > 0.05f)
+        else if (currentRotation.transform.rotation.z > 0.5f)
         {
             swaySpeed *= -1;
         }
@@ -33,7 +33,7 @@ public class CameraSway : MonoBehaviour
     private Transform GetTransform()
     {
         cameraTransform = this.gameObject.GetComponent<Transform>();
-        //Debug.Log(cameraTransform.rotation.z);
+        Debug.Log(cameraTransform.rotation.z);
         return cameraTransform;
     }
 

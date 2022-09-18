@@ -17,7 +17,7 @@ public class CameraSway : MonoBehaviour
     void Update()
     {
 
-        Transform currentRotation = GetTransform();
+        Transform currentRotation = this.transform;
         cameraTransform.Rotate(Vector3.forward * Time.deltaTime * swaySpeed);
         
         if (currentRotation.transform.rotation.z < -0.5f)

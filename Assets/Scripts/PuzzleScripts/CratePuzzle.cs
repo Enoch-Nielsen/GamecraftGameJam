@@ -25,12 +25,25 @@ public class CratePuzzle : MonoBehaviour
 
     private void Start()
     {
-        int index = 0;
 
-        foreach (var position in cratePositionList)
+        float startPosX = crateSize * 2 * -1;
+        float startPosY = startPosX * -1;
+
+        for (int x = 0; x < 5; x++)
         {
+
+            float currentX = startPosX + (crateSize * x);
             
+            for (int y = 0; y < 5; y++)
+            {
+                
+                float currentY = startPosY - (crateSize * y);
+
+                cratePositionList.Add(new Vector2(currentX, currentY));
+            }
         }
+
+        int index = 0;
         
         foreach (var position in cratePositionList)
         {

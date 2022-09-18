@@ -25,6 +25,6 @@ public class CameraSway : MonoBehaviour
             currentSwaySpeed = -swaySpeed;
         }
         
-        Debug.Log(currentRotation.z * 57.29);
+        //Debug.Log(currentRotation.z * 57.29);
     }
 }

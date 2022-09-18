@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         float verticalMovement = Input.GetAxis("Vertical");
 
         // Update Game State and Animation State.
-        if (horizontalMovement != 0 || verticalMovement != 0 && gameManager.gameState != GameManager.GameState.Interacting)
+        if ((horizontalMovement != 0 || verticalMovement != 0) && gameManager.gameState != GameManager.GameState.Interacting)
         {
             gameManager.gameState = GameManager.GameState.Moving;
             animator.SetBool("Moving", true);
@@ -68,11 +68,11 @@ public class PlayerController : MonoBehaviour
                 playerTurnLerp += Time.deltaTime;
             }
         }
-
-        playerSprite.transform.localEulerAngles = Vector3.Lerp(playerSprite.transform.localEulerAngles, new Vector3(0, yRotation, 0), playerTurnLerp);
-
+        
         if (gameManager.gameState == GameManager.GameState.Moving)
         {
+            playerSprite.transform.localEulerAngles = Vector3.Lerp(playerSprite.transform.localEulerAngles, new Vector3(0, yRotation, 0), playerTurnLerp);
+
             transform.Translate(Vector3.forward * Time.deltaTime * speed * waterSpeed * verticalMovement);
             transform.Translate(Vector3.right * Time.deltaTime * speed * waterSpeed * horizontalMovement);
         }

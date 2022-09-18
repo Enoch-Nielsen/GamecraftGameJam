@@ -4,37 +4,27 @@ using UnityEngine;
 
 public class CameraSway : MonoBehaviour
 {
-    [SerializeField] float swaySpeed = 1;
-    [SerializeField] Transform cameraTransform = null;
-    //[SerializeField] float swayHold = 2;
-    // Start is called before the first frame update
-    void Start()
-    {
+    [SerializeField] private float swaySpeed = 1;
+    [SerializeField] private float currentSwaySpeed = 1;
+    [SerializeField] private float swayBounds;
 
-    }
+    [SerializeField] private Transform cameraTransform;
 
     // Update is called once per frame
     void Update()
     {
-
-        Transform currentRotation = this.transform;
-        cameraTransform.Rotate(Vector3.forward * Time.deltaTime * swaySpeed);
+        Quaternion currentRotation = gameObject.transform.localRotation;
+        cameraTransform.Rotate(Vector3.forward * Time.deltaTime * currentSwaySpeed);
         
-        if (currentRotation.transform.rotation.z < -0.5f)
+        if (currentRotation.z * 57.29 <= -swayBounds)
         {
-            swaySpeed *= -1;
+            currentSwaySpeed = swaySpeed;
         }
-        else if (currentRotation.transform.rotation.z > 0.5f)
+        else if (currentRotation.z * 57.29 >= swayBounds)
         {
-            swaySpeed *= -1;
+            currentSwaySpeed = -swaySpeed;
         }
+        
+        Debug.Log(currentRotation.z * 57.29);
     }
-
-    private Transform GetTransform()
-    {
-        cameraTransform = this.gameObject.GetComponent<Transform>();
-        Debug.Log(cameraTransform.rotation.z);
-        return cameraTransform;
-    }
-
 }

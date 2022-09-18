@@ -1328,7 +1328,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11c9578941eccf24287ba1e570150e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swaySpeed: 1
+  swaySpeed: 0.75
+  currentSwaySpeed: 1
+  swayBounds: 0.65
   cameraTransform: {fileID: 922705022}
 --- !u!1 &1022982777
 GameObject:

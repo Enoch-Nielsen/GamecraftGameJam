@@ -24,7 +24,6 @@ public class LockerPuzzle : MonoBehaviour
         
             if (delayTimer <= 0)
             {
-                _gameManager.playerInventory.Add(GameManager.Item.RoomKey);
                 _gameManager.gameState = GameManager.GameState.Idle;
                 _gameManager.playerMessage.SendMessage("You obtained the Room Key!");
                 _gameManager.currentPlayerInteractable.canInteract = false;

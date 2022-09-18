@@ -8,6 +8,7 @@ public class RoomTransition : MonoBehaviour
     [SerializeField] float transitionTime = 2;
     [SerializeField] GameObject cameraObject = null;
     [SerializeField] GameObject nextCameraPlacement = null;
+    [SerializeField] bool teleportPlayer = false;
 
     // Start is called before the first frame update
     void Start()
@@ -27,10 +28,19 @@ public class RoomTransition : MonoBehaviour
         {
             return;
         }
+        /*if (teleportPlayer)
+        {*/
+            player.gameObject.SetActive(false);
 
-        player.gameObject.SetActive(false);
+            StartCoroutine(RoomChangeTime(player));
+        /*}
+        else
+        {
+            cameraObject.transform.position = nextCameraPlacement.transform.position;
+            cameraObject.transform.rotation = nextCameraPlacement.transform.rotation;
+        }*/
 
-        StartCoroutine(RoomChangeTime(player));
+
 
     }
 

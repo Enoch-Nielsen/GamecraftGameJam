@@ -31,8 +31,8 @@ public class Interactable : MonoBehaviour
     void Start()
     {
         Material material = Instantiate(outline);
-        gameObject.GetComponent<MeshRenderer>().materials[1] = material;
-        outline = gameObject.GetComponent<MeshRenderer>().materials[1];
+        gameObject.GetComponent<MeshRenderer>().materials[^1] = material;
+        outline = gameObject.GetComponent<MeshRenderer>().materials[^1];
 
         outline.SetFloat("_Alpha", 0);
     }

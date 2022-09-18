@@ -28,16 +28,18 @@ public class PlayerController : MonoBehaviour
         float verticalMovement = Input.GetAxis("Vertical");
 
         // Update Game State and Animation State.
-        if ((horizontalMovement != 0 || verticalMovement != 0) && gameManager.gameState != GameManager.GameState.Interacting)
+        if ((horizontalMovement != 0 || verticalMovement != 0) && gameManager.gameState == GameManager.GameState.Idle)
         {
             gameManager.gameState = GameManager.GameState.Moving;
             animator.SetBool("Moving", true);
         }
-        else
+        else if ((horizontalMovement == 0 && verticalMovement == 0) && gameManager.gameState != GameManager.GameState.Interacting && 
+                 gameManager.gameState != GameManager.GameState.RoomTransition)
         {
+            gameManager.gameState = GameManager.GameState.Idle;
             animator.SetBool("Moving", false);
         }
-
+        
         // Update Horizontal Direction
         if (horizontalMovement != 0)
         {
@@ -149,7 +151,9 @@ public class PlayerController : MonoBehaviour
             
             if (gameManager.currentPlayerInteractable.hasInterface)
             {
-                gameManager.gameState = GameManager.GameState.Interacting;
+                if (!gameManager.currentPlayerInteractable.isDoor)
+                    gameManager.gameState = GameManager.GameState.Interacting;
+                
                 gameManager.currentPlayerInteractable.interactiveInterface.SetActive(true);
             }
 

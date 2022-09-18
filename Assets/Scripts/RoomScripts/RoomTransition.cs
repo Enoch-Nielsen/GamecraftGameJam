@@ -1,56 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RoomTransition : MonoBehaviour
 {
-    [SerializeField] GameObject playerSpawnSpace = null;
-    [SerializeField] float transitionTime = 2;
-    [SerializeField] GameObject cameraObject = null;
-    [SerializeField] GameObject nextCameraPlacement = null;
-    [SerializeField] bool teleportPlayer = false;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] GameObject playerSpawnSpace;
+    [SerializeField] private float transitionTime;
+    private float transitionTimer = 0.0f;
+    private bool doTransition;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        gameManager.gameState = GameManager.GameState.RoomTransition;
+
+        doTransition = true;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.TryGetComponent<PlayerController>(out PlayerController player))
+        if (transitionTimer <= transitionTime && doTransition)
         {
-            return;
+            transitionTimer += Time.deltaTime;
         }
-        /*if (teleportPlayer)
-        {*/
-            player.gameObject.SetActive(false);
-
-            StartCoroutine(RoomChangeTime(player));
-        /*}
-        else
-        {
-            cameraObject.transform.position = nextCameraPlacement.transform.position;
-            cameraObject.transform.rotation = nextCameraPlacement.transform.rotation;
-        }*/
-
-
-
+        
+        if(transitionTimer >= transitionTime)
+            RoomChange(gameManager.player, Camera.main);
     }
 
-    private IEnumerator RoomChangeTime(PlayerController player)
+    private void RoomChange(PlayerController player, Camera camera)
     {
-        yield return new WaitForSeconds(transitionTime);
-
         player.gameObject.SetActive(true);
         player.transform.position = playerSpawnSpace.transform.position;
-        cameraObject.transform.position = nextCameraPlacement.transform.position;
-        cameraObject.transform.rotation = nextCameraPlacement.transform.rotation;
+        camera.transform.position = player.transform.position + new Vector3(7.0F,
+            player.transform.position.y + 3.7F, player.transform.position.z);
+
+        gameManager.gameState = GameManager.GameState.Idle;
+        Debug.Log(gameManager.gameState);
+
+        gameObject.SetActive(false);
     }
 }

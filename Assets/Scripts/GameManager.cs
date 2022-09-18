@@ -8,7 +8,8 @@ using UnityEngine.Rendering;
 
 public class GameManager : MonoBehaviour
 {
-    [Header("Player")]
+    [Header("Player")] 
+    public PlayerController player;
     public bool playerCanInteract;
     public enum Item {None, Knife, RoomKey, Knowledge, LunchBoxKey, Key}
     public List<Item> playerInventory;
@@ -21,7 +22,13 @@ public class GameManager : MonoBehaviour
     public GameState gameState;
     public enum GameState {Moving, Idle, Interacting, RoomTransition}
     public PlayerMessage playerMessage;
-    
+    public GameObject spawnTransition;
+
+    private void Start()
+    {
+        Respawn(); // Replace this with START button later.
+    }
+
     private void Update()
     {
         if (gameState == GameState.Interacting)
@@ -32,5 +39,10 @@ public class GameManager : MonoBehaviour
         {
             blurVolume.SetActive(false);
         }
+    }
+
+    private void Respawn()
+    {
+        spawnTransition.SetActive(true);
     }
 }

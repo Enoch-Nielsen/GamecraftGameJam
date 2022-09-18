@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private AudioSource walkingSound = null;
     //Player edited Variables
     [SerializeField] private float speed = 5;
     [SerializeField] private int turnDirection;
@@ -161,6 +162,16 @@ public class PlayerController : MonoBehaviour
             {
                 gameManager.currentPlayerInteractable.canInteract = false;
             }
+        }
+
+        //Play Walking Sound
+        if(horizontalMovement == 0 && verticalMovement == 0)
+        {
+            walkingSound.enabled = false;
+        }
+        else
+        {
+            walkingSound.enabled = true;
         }
     }
 }

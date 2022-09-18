@@ -69,6 +69,12 @@ public class Pipe : MonoBehaviour
 
                 pipePuzzle.pipeList[index] = pipePuzzle.pipeList[pipePuzzle.selectedPipe.index];
                 pipePuzzle.pipeList[pipePuzzle.selectedPipe.index] = tempPipe;
+                
+                for (int i = 0; i < 9; i++)
+                {
+                    pipePuzzle.pipeList[i].doHighlight = false;
+                    pipePuzzle.pipeList[i].canSwap = false;
+                }
             }
             
             return;
@@ -84,8 +90,8 @@ public class Pipe : MonoBehaviour
 
         leftCheck = index - 3 > -1;
         rightCheck = index + 3 < 9;
-        upCheck = index - 1 > -1;
-        downCheck = index + 1 < 9;
+        upCheck = index - 1 > -1 && (index % 3 != 0);
+        downCheck = index + 1 < 9 && ((index + 1) % 3 != 0);
 
         if (leftCheck)
         {
